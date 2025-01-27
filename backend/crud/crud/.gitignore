@@ -1,0 +1,62 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.db
+*.sqlite3
+*.log
+
+# Django specific
+*.pot
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Virtual environments
+.venv/
+env/
+.venv/
+
+# Environment variables
+.env
+*.env
+
+# Django migrations
+migrations/
+
+# Media files (uploads)
+media/
+
+# Static files (if you are not using version control for static)
+static/
+
+# IDE files
+.vscode/
+.idea/
+
+# Mac system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Coverage reports
+*.coverage
+.coverage.*
+
+# pyenv settings
+.python-version
+
+# pytest cache
+.cache/
+
+# mypy
+.mypy_cache/
+
+# pythons egg-info
+*.egg-info/

@@ -1,0 +1,52 @@
+# Node.js (React frontend)
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+frontend/.next/
+
+# Django/Python (backend)
+backend/__pycache__/
+backend/crud/db.sqlite3
+backend/crud/crud/__pycache__
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Virtual environments
+backend/.venv/
+
+# Django database
+db.sqlite3
+*.sqlite
+# Django migrations
+curd/crud/migrations/
+# Environment variables
+.env
+# Logs
+*.log
+# Media and Static files
+media/
+static/
+
+# VS Code settings
+.vscode/
+
+# Mac system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+
+backend/venv/
+backend/.venv
+
+# Logs and temporary files
+*.log
+*.out
+*.err
+
+# System files
+.DS_Store
+Thumbs.db
