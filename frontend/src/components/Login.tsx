@@ -1,16 +1,14 @@
 import { useState, ChangeEvent, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { Eye, EyeOff, Mail, Lock, User } from 'lucide-react';
+import { Eye, EyeOff, Mail, Lock } from 'lucide-react';
 
 interface FormData {
-  name: string;
   email: string;
   password: string;
 }
 
-const SignUp: React.FC = () => {
+const Login: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
-    name: '',
     email: '',
     password: '',
   });
@@ -32,23 +30,8 @@ const SignUp: React.FC = () => {
   return (
     <div className="min-h-screen bg-black flex items-center justify-center py-10">
       <div className="bg-zinc-900 text-white p-8 rounded-xl shadow-xl w-full max-w-md">
-        <h2 className="text-2xl font-semibold text-center mb-6">Create Account</h2>
+        <h2 className="text-2xl font-semibold text-center mb-6">Login</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium">Name</label>
-            <div className="relative">
-              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-zinc-400" size={20} />
-              <input 
-                type="text" 
-                id="name" 
-                name="name" 
-                value={formData.name}
-                onChange={handleChange}
-                required 
-                className="w-full p-3 pl-10 rounded-md bg-zinc-800 text-white focus:ring-2 focus:ring-zinc-500"
-              />
-            </div>
-          </div>
           <div>
             <label htmlFor="email" className="block text-sm font-medium">Email</label>
             <div className="relative">
@@ -87,13 +70,13 @@ const SignUp: React.FC = () => {
             </div>
           </div>
           <button type="submit" className="w-full py-3 mt-4 rounded-md bg-zinc-600 hover:bg-zinc-500 text-white font-semibold focus:outline-none focus:ring-2 focus:ring-zinc-500">
-            Sign Up
+            Login
           </button>
         </form>
         <div className="mt-6 text-center">
           <p className="text-sm">
-            Already have an account? 
-            <Link to="/login" className="text-zinc-400 hover:text-zinc-300"> Login</Link>
+            Don't have an account? 
+            <Link to="/signup" className="text-zinc-400 hover:text-zinc-300"> Sign Up</Link>
           </p>
         </div>
       </div>
@@ -101,4 +84,4 @@ const SignUp: React.FC = () => {
   );
 };
 
-export default SignUp;
+export default Login;
