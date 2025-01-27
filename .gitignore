@@ -21,7 +21,7 @@ backend/.venv/
 db.sqlite3
 *.sqlite
 # Django migrations
-curd/crud/migrations/
+crud/crud/migrations/
 # Environment variables
 .env
 # Logs

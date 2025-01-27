@@ -1,7 +1,6 @@
 import { useState, ChangeEvent, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { Eye, EyeOff, Mail, Lock } from 'lucide-react';
-
 interface FormData {
   email: string;
   password: string;
