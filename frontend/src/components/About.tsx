@@ -1,6 +1,7 @@
 import Navbar from "./Navbar";
 
 export default function About() {
+    const year = new Date().getFullYear()
   return (
     <div className="min-h-screen bg-zinc-900 text-white">
       <Navbar />
@@ -35,7 +36,7 @@ export default function About() {
       </main>
 
       <footer className="bg-black text-white text-center py-6 mt-16 rounded-t-lg">
-        <p className="text-lg">&copy; 2024 E-Shop. All rights reserved.</p>
+        <p className="text-lg">&copy; {year} E-Shop. All rights reserved.</p>
       </footer>
     </div>
   );
