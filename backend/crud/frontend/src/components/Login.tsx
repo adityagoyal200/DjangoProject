@@ -37,6 +37,7 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
   });
 
     if (response.status === 200) {
+      console.log(response.data)
       navigate('/home'); 
     }
   } catch (err: unknown) {
