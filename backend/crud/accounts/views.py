@@ -1,6 +1,6 @@
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import logout
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
@@ -34,22 +34,18 @@ def register_page(request):
 
     return JsonResponse({'error': 'Invalid request method'}, status=405)
 
-
 @csrf_exempt
 def login_page(request):
     if request.method == 'POST':
         try:
-            data = json.loads(request.body)  # Parse JSON request
+            data = json.loads(request.body)  
             email = data.get('email')
             password = data.get('password')
-
-            user_obj = User.objects.filter(username=email).first()
+            user_obj = User.objects.filter(email=email).first() 
             if not user_obj:
                 return JsonResponse({'error': 'Account not found'}, status=404)
 
-            user = authenticate(username=email, password=password)
-            if user:
-                login(request, user)
+            if user_obj.check_password(password):
                 return JsonResponse({'message': 'Login successful'}, status=200)
 
             return JsonResponse({'error': 'Invalid credentials'}, status=401)
@@ -60,10 +56,13 @@ def login_page(request):
     return JsonResponse({'error': 'Invalid request method'}, status=405)
 
 
+
 @csrf_exempt
 def logout_page(request):
     if request.method == 'POST':
-        logout(request)
-        return JsonResponse({'message': 'Logout successful'}, status=200)
+        if request.user.is_authenticated:
+            return JsonResponse({'message': 'Logout successful'}, status=200)
+        else:
+            return JsonResponse({'error': 'No user is logged in'}, status=400)
 
     return JsonResponse({'error': 'Invalid request method'}, status=405)

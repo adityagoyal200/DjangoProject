@@ -31,8 +31,10 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 
   try {
     const response = await axios.post('http://127.0.0.1:8000/accounts/login/', formData, {
-      withCredentials: true, 
-    });
+      headers: {
+          'Content-Type': 'application/json',
+      },
+  });
 
     if (response.status === 200) {
       navigate('/home'); 
