@@ -2,12 +2,12 @@ import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
+  const year = new Date().getFullYear()
 
   return (
     <div className="min-h-screen bg-zinc-900 text-white">
       <Navbar />
-
       <main className="px-8 py-16 flex flex-col items-center">
         <section className="relative w-full max-w-5xl text-center py-32 rounded-lg shadow-lg bg-gradient-to-r from-red-700 to-sky-800">
           <h1 className="text-6xl font-extrabold tracking-tight">
@@ -34,15 +34,15 @@ export default function Home() {
         </section>
 
         <section className="mt-16 w-full max-w-4xl">
-          <div className="bg-zinc-800 p-8 rounded-xl shadow-lg text-center">
+          <div className="bg-zinc-800 p-8 rounded-xl shadow-lg bg-gradient-to-r from-red-700 to-sky-800 text-center">
             <h2 className="text-3xl font-semibold text-white">Join the Movement</h2>
-            <p className="mt-4 text-lg text-zinc-400">
+            <p className="mt-4 text-lg text-zinc-200">
               Be part of a community that values quality, creativity, and
               individuality. Stay updated with exclusive insights and trends.
             </p>
             <button
               onClick={() => navigate("/contact")}
-              className="mt-6 bg-red-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-red-700 transition-all"
+              className="mt-6 bg-red-100 text-black font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-red-700 transition-all"
             >
               Get in Touch
             </button>
@@ -51,7 +51,7 @@ export default function Home() {
       </main>
 
       <footer className="bg-black text-white text-center py-8 mt-16 rounded-t-lg">
-        <p className="text-lg">&copy; 2024 E-Shop. All rights reserved.</p>
+        <p className="text-lg">&copy; {year} E-Shop. All rights reserved.</p>
       </footer>
     </div>
   );

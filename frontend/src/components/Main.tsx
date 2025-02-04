@@ -1,4 +1,3 @@
-import React from 'react';
 import eco from '../assets/photos/ecomerce.jpg'; 
 import { Link } from 'react-router-dom'; 
 
