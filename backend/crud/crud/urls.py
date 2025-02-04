@@ -1,6 +1,5 @@
 """
 URL configuration for crud project.
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
 Examples:
@@ -15,9 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from . import views
+from . import views 
+from django.urls import path , include
 
 urlpatterns = [
-    path('', views.home, name='home'),  # Serve React app at the root URL
+    path('', views.home, name='home'),
+    path('login/',views.home, name='react-login'),
+    path('signup/',views.home, name='react-signup'),
+    path('accounts/', include('accounts.urls') ),
 ]
 

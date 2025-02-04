@@ -1,6 +1,8 @@
 import { useState, ChangeEvent, FormEvent } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios,{AxiosError} from 'axios';
 import { Eye, EyeOff, Mail, Lock } from 'lucide-react';
+
 interface FormData {
   email: string;
   password: string;
@@ -12,6 +14,8 @@ const Login: React.FC = () => {
     password: '',
   });
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate(); // For redirection
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -21,15 +25,34 @@ const Login: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log(formData);
-  };
+const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setError(null);
+
+  try {
+    const response = await axios.post('http://127.0.0.1:8000/accounts/login/', formData, {
+      withCredentials: true, 
+    });
+
+    if (response.status === 200) {
+      navigate('/home'); 
+    }
+  } catch (err: unknown) {
+    if (err instanceof AxiosError) {
+      console.error(err.response?.data || err.message); 
+    } else if (err instanceof Error) {
+      console.error(err.message); 
+    }
+    setError('Invalid email or password. Please try again.');
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-black flex items-center justify-center py-10">
       <div className="bg-zinc-900 text-white p-8 rounded-xl shadow-xl w-full max-w-md">
         <h2 className="text-2xl font-semibold text-center mb-6">Login</h2>
+        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="email" className="block text-sm font-medium">Email</label>
