@@ -10,23 +10,16 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-# STATIC CONFIGURATION
-STATIC_URL = '/static/'
-
-# Path to collect static files 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+BASE_DIR = Path(__file__).resolve().parent.parent  # Base directory of the Django project
 
 STATICFILES_DIRS = [
-    BASE_DIR.parent / 'frontend' / 'dist' / 'assets',  # Adjust according to your actual structure
+    os.path.join(BASE_DIR,'frontend/dist/assets')
 ]
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
 
+STATIC_URL = '/static/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -77,9 +70,7 @@ ROOT_URLCONF = 'crud.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-             BASE_DIR / 'templates',
-            ],
+        'DIRS': [os.path.join(BASE_DIR,'frontend/dist')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -139,15 +130,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
-STATIC_URL = '/static/'
+STATIC_URL = '/assets/'
 
 # Path to collect static files (ensure you have this in your Django project directory)
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-
-# Point to React's dist folder as static files source
-STATICFILES_DIRS = [
-    BASE_DIR.parent / 'frontend' / 'dist' / 'assets',  # Adjust path to your actual structure
-]
 
 
 # Default primary key field type

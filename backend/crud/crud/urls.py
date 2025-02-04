@@ -15,8 +15,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from .views import home
+from . import views
 
 urlpatterns = [
-    path('', home, name='home'),  # Serve React app at the root URL
+    path('', views.home, name='home'),  # Serve React app at the root URL
 ]
+
